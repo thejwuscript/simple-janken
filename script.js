@@ -15,7 +15,8 @@ function computerPlay() {
 
 }
 
-let computerSelection = computerPlay();
+
+
 
 // Get the player's input via prompt and store it in a variable.
 // Capitalize all letters in the string and remove whitespace. Store it in a new variable.
@@ -25,6 +26,7 @@ let computerSelection = computerPlay();
 
 let initalplay
 let playerSelection
+let computerSelection = computerPlay();
 let num2
 
 function tryagain() {
@@ -32,42 +34,58 @@ function tryagain() {
   num2 = 0;
 }
 
-do {
-  initalplay = prompt("What's your play? Rock, paper or scissors?", "");
-  playerSelection = initalplay.toUpperCase().trim();
-  if (playerSelection == "ROCK") {
-  num2 = 1
-  } else if (playerSelection == "PAPER") {
-  num2 = 1 
-  } else if (playerSelection == "SCISSORS") {
-  num2 = 1
-  } else tryagain();
-} while (num2 == 0);
+// do {
+ // initalplay = prompt("What's your play? Rock, paper or scissors?", "");
+//  playerSelection = initalplay.toUpperCase().trim();
+//  if (playerSelection == "ROCK") {
+//  num2 = 1
+//  } else if (playerSelection == "PAPER") {
+//  num2 = 1 
+//  } else if (playerSelection == "SCISSORS") {
+//  num2 = 1
+//  } else tryagain();
+//} while (num2 == 0);
 
 // I could have made each case unique, for example if I wanted to display what the computer played,
 // but for simplicity sake I have grouped the cases to output the same results as below.
 
-function playRound(playerSelection, computerSelection)  
+function playRound(playerSelection, computerSelection) { 
+  
+  do {
+    initalplay = prompt("What's your play? Rock, paper or scissors?", "");
+    playerSelection = initalplay.toUpperCase().trim();
+    if (playerSelection == "ROCK") {
+    num2 = 1
+    } else if (playerSelection == "PAPER") {
+    num2 = 1 
+    } else if (playerSelection == "SCISSORS") {
+    num2 = 1
+    } else tryagain();
+  } while (num2 == 0);
+
+  console.log(playerSelection.concat(computerSelection))
+
   switch (playerSelection.concat(computerSelection)) {
     case "ROCKROCK":
     case "PAPERPAPER":
     case "SCISSORSSCISSORS":
       alert("It's a tie!");
-      return 1;
-    // break
+    //  return 1;
+    break;
     case "ROCKSCISSORS":
     case "PAPERROCK":
     case "SCISSORSPAPER":
       alert("You win!");
-      return 2;
-    // break
+    //  return 2;
+    break;
     case "ROCKPAPER":
     case "PAPERSCISSORS":
     case "SCISSORSROCK":
       alert("You lose.");
-      return 0;
-    // break
+    //  return 0;
+    break;
 
   }
-   
+}
 
+playRound(playerSelection,computerSelection);
