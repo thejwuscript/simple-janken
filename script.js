@@ -26,8 +26,9 @@ function computerPlay() {
 
 // let playerSelection --> no need to create this variable
 let computerSelection = computerPlay();
-let playerSelection
-let num2
+let playerSelection;
+let num2;
+let roundcount = 1;
 
 // create two variables name playerscore and compscore. Number data type. Give them initial values of 0.
 let playerscore = 0;
@@ -48,7 +49,7 @@ function tryagain() {
 function playRound(playerSelection, computerSelection) { 
   
   do {
-    initalplay = prompt("What's your play? Rock, paper or scissors?", "");
+    initalplay = prompt(`Round ${roundcount++}.  What's your play? Rock, Paper or Scissors?`, "");
     playerSelection = initalplay.toUpperCase().trim();
     if (playerSelection == "ROCK") {
     num2 = 1
@@ -123,11 +124,13 @@ function game() {
   playRound(playerSelection, computerSelection);
 }
 
-alert("Let's play Janken! There will be 5 rounds.");
+alert("Let's play Janken!\nThere are 5 rounds against the computer.");
+alert("Rules:\nWin - 2 points\nTie - 1 point\nLose - 0 points")
+alert("Points will be tallied after 5 rounds.\nGame START!")
 
 game();
 
-alert(`Game end. Your score is ${playerscore}. Computer's score is ${compscore}.`)
+alert(`Game END.\nYour score is ${playerscore}.\nComputer's score is ${compscore}.`)
 
 // To test the do while loop, include the next line of code:
 // playerscore = compscore
@@ -146,6 +149,6 @@ if (playerscore > compscore) {
   if (playerscore > compscore) {
     alert("Tie broken! You've won the game!")
   } else if (playerscore < compscore) {
-    alert("Oh no, so close! You've lost the game :(");
+    alert("Oh no, so close! You've lost the game : (");
   }
 }
