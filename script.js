@@ -121,9 +121,17 @@ function playRound(playerSelection, computerSelection) {
 //Hint: call your playRound function 5 times in a row
 function game() {
   playRound(playerSelection, computerSelection);
+  computerPlay();
+  computerSelection = computerPlay();
   playRound(playerSelection, computerSelection);
+  computerPlay();
+  computerSelection = computerPlay();
   playRound(playerSelection, computerSelection);
+  computerPlay();
+  computerSelection = computerPlay();
   playRound(playerSelection, computerSelection);
+  computerPlay();
+  computerSelection = computerPlay();
   playRound(playerSelection, computerSelection);
 }
 
