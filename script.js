@@ -24,10 +24,14 @@ function computerPlay() {
 // Else, show prompt "Invalid entry, try again." and ask for the player's input again.
 // keep looping until the playerSelection is equal to "ROCK" or "PAPER" or SCISSORS"
 
-let initalplay
-let playerSelection
+// let playerSelection --> no need to create this variable
 let computerSelection = computerPlay();
+let playerSelection
 let num2
+
+// create two variables name playerscore and compscore. Number data type. Give them initial values of 0.
+let playerscore = 0;
+let compscore = 0;
 
 function tryagain() {
   alert("Invalid entry. Check your spelling and try again.")
@@ -48,6 +52,10 @@ function tryagain() {
 
 // I could have made each case unique, for example if I wanted to display what the computer played,
 // but for simplicity sake I have grouped the cases to output the same results as below.
+// Edit: Ended up making each case unique for better understanding of the result from the user's side.
+// Edit #2: I did not need to specify parameters for this function. In fact, if had the parameter
+// "computerSelection" and I did not provide an argument when the function is called, "computerSelection"
+// would return undefined. Parameters are included here for the sake of following the instructions per TOP
 
 function playRound(playerSelection, computerSelection) { 
   
@@ -63,29 +71,63 @@ function playRound(playerSelection, computerSelection) {
     } else tryagain();
   } while (num2 == 0);
 
-  console.log(playerSelection.concat(computerSelection))
-
-  switch (playerSelection.concat(computerSelection)) {
+   switch (playerSelection.concat(computerSelection)) {
     case "ROCKROCK":
+      alert("Computer played rock. It's a tie!");
+      ++playerscore;
+      ++compscore;
+      break;
     case "PAPERPAPER":
+      alert("Computer played paper. It's a tie!");
+      ++playerscore;
+      ++compscore;
+      break;
     case "SCISSORSSCISSORS":
-      alert("It's a tie!");
-    //  return 1;
-    break;
+      alert("Computer played scissors. It's a tie!");
+      ++playerscore;
+      ++compscore;
+       break;
     case "ROCKSCISSORS":
+      alert("Computer played scissors. You win!");
+      playerscore += 2;
+      break;
     case "PAPERROCK":
+      alert("Computer played rock. You win!");
+      playerscore += 2;
+      break;
     case "SCISSORSPAPER":
-      alert("You win!");
-    //  return 2;
-    break;
+      alert("Computer played paper. You win!");
+      playerscore += 2;
+      break;
     case "ROCKPAPER":
+      alert("Computer played paper. You lose.");
+      compscore += 2;
+      break;
     case "PAPERSCISSORS":
+      alert("Computer played scissors. You lose.");
+      compscore += 2;
+      break;
     case "SCISSORSROCK":
-      alert("You lose.");
-    //  return 0;
-    break;
+      alert("Computer played rock. You lose.");
+      compscore += 2;
+      break;
 
   }
 }
 
-playRound(playerSelection,computerSelection);
+
+//Write a NEW function called game(). Use the previous function inside of this one to play
+// a 5 round game that keeps score and reports a winner or loser at the end.
+//Hint: call your playRound function 5 times in a row
+function game() {
+  playRound(playerSelection, computerSelection);
+  playRound(playerSelection, computerSelection);
+  playRound(playerSelection, computerSelection);
+  playRound(playerSelection, computerSelection);
+  playRound(playerSelection, computerSelection);
+}
+
+game();
+
+console.log(playerscore);
+console.log(compscore);
