@@ -38,18 +38,6 @@ function tryagain() {
   num2 = 0;
 }
 
-// do {
- // initalplay = prompt("What's your play? Rock, paper or scissors?", "");
-//  playerSelection = initalplay.toUpperCase().trim();
-//  if (playerSelection == "ROCK") {
-//  num2 = 1
-//  } else if (playerSelection == "PAPER") {
-//  num2 = 1 
-//  } else if (playerSelection == "SCISSORS") {
-//  num2 = 1
-//  } else tryagain();
-//} while (num2 == 0);
-
 // I could have made each case unique, for example if I wanted to display what the computer played,
 // but for simplicity sake I have grouped the cases to output the same results as below.
 // Edit: Ended up making each case unique for better understanding of the result from the user's side.
@@ -88,27 +76,27 @@ function playRound(playerSelection, computerSelection) {
       ++compscore;
        break;
     case "ROCKSCISSORS":
-      alert("Computer played scissors. You win!");
+      alert("Computer played scissors. You win this round!");
       playerscore += 2;
       break;
     case "PAPERROCK":
-      alert("Computer played rock. You win!");
+      alert("Computer played rock. You win this round!");
       playerscore += 2;
       break;
     case "SCISSORSPAPER":
-      alert("Computer played paper. You win!");
+      alert("Computer played paper. You win this round!");
       playerscore += 2;
       break;
     case "ROCKPAPER":
-      alert("Computer played paper. You lose.");
+      alert("Computer played paper. Oh no.");
       compscore += 2;
       break;
     case "PAPERSCISSORS":
-      alert("Computer played scissors. You lose.");
+      alert("Computer played scissors. Oh no.");
       compscore += 2;
       break;
     case "SCISSORSROCK":
-      alert("Computer played rock. You lose.");
+      alert("Computer played rock. Oh no.");
       compscore += 2;
       break;
 
@@ -141,8 +129,23 @@ game();
 
 alert(`Game end. Your score is ${playerscore}. Computer's score is ${compscore}.`)
 
+// To test the do while loop, include the next line of code:
+// playerscore = compscore
+
 if (playerscore > compscore) {
   alert("Congratulations! You won the game!");  
 } else if (playerscore < compscore) {
   alert("You lost the game.");
-} else alert("Wow! It's a draw!");
+} else if (playerscore == compscore) {
+  alert("Wow! It's a draw! Tiebreaker round!");
+  do {
+    computerPlay();
+    playRound(playerSelection, computerSelection);
+  }
+  while (playerscore == compscore);
+  if (playerscore > compscore) {
+    alert("Tie broken! You've won the game!")
+  } else if (playerscore < compscore) {
+    alert("Oh no, so close! You've lost the game :(");
+  }
+}
