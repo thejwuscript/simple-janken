@@ -135,7 +135,14 @@ function game() {
   playRound(playerSelection, computerSelection);
 }
 
+alert("Let's play Janken! There will be 5 rounds.");
+
 game();
 
-console.log(playerscore);
-console.log(compscore);
+alert(`Game end. Your score is ${playerscore}. Computer's score is ${compscore}.`)
+
+if (playerscore > compscore) {
+  alert("Congratulations! You won the game!");  
+} else if (playerscore < compscore) {
+  alert("You lost the game.");
+} else alert("Wow! It's a draw!");
