@@ -19,6 +19,7 @@ let compscore = 0;
 
 function tryagain() {
   alert("Invalid entry. Check your spelling and try again.")
+  roundcount--;
   num2 = 0;
 }
 
@@ -122,4 +123,4 @@ if (playerscore > compscore) {
   }
 }
 
-// Bug. Round keeps counting if player tries again due to spelling error
+
