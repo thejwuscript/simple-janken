@@ -1,0 +1,18 @@
+.display-results {
+  height: 50px;
+ 
+ 
+  
+}
+
+.display-score {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.winner {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
